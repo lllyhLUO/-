@@ -18,3 +18,9 @@ uv run base/flask_service.py
 执行uv sync
 然后下载pytest时，需要先下载一个头文件ffi.h(属于libffi-dev开发依赖),执行apt install -y libffi-dev进行安装。运行uv add pytest下载，用pytest --version验证是否下载成功。
 最后执行pytest就可以进行运行测试了。
+
+pytest细节：
+pytest执行时可以设置a.参数；b.mark（标记）;c.fixture;d.hook（困难）。
+requests：a.[向接口发送请求]和pytest结合=接口自动化；b.[控制浏览器]和pytest结合=web自动化;c.[控制手机App]和pytest结合=App自动化。
+ 
+

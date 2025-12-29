@@ -27,3 +27,26 @@ def test_api_form():
         data=user_info #就不用设置请求头了
     )
     assert resp.s
+
+# 测试JSON
+@pytest.mark.skip
+def test_api_json():
+
+    resp = requests.request(
+        method='post',
+        url='https://httpbin.org/post',
+        json=user_info # json格式传参
+    )
+    assert resp.status_code == 200
+
+# 测试文件上传
+def test_file_upload():
+    path = r"F:\codePython\autoTest\testPNG.png" # 没打开之前就是个字符串
+    fileObj = open(path, 'rb') # 文件对象
+
+    resp = requests.request(
+        method= 'post',
+        url = 'https://httpbin.org/post',
+        files={'file': fileObj},
+    )
+    assert resp.status_code == 200

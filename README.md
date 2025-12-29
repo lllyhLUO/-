@@ -22,5 +22,10 @@ uv run base/flask_service.py
 pytest细节：
 pytest执行时可以设置a.参数；b.mark（标记）;c.fixture;d.hook（困难）。
 requests：a.[向接口发送请求]和pytest结合=接口自动化；b.[控制浏览器]和pytest结合=web自动化;c.[控制手机App]和pytest结合=App自动化。
- 
+
+ 1，表单参数
+ 主要在web项目：
+ 1）参数只能是字符串
+ 2）请求头中包含form
+ requests技巧：如果data参数是一个字典，则自动将其识别为表单，并自动添加请求头。这里应该就可以运用上YAML了。
 

@@ -42,3 +42,16 @@ requests：a.[向接口发送请求]和pytest结合=接口自动化；b.[控制�
 requests技巧：如果传递file参数，自动添加请求头。
 4.参数传递
  如何从
+
+ Flask
+ 运行文件是run.py,run.py会从app目录的初始化文件中引用create_app()函数。
+create_app()里面会实例化一个Flask对象，
+从路由文件中引入蓝图对象，
+使用实例化的Flask对象app注册蓝图，并返回实例化对象app。
+
+在routes.py里面写业务逻辑。
+bp.route( )映造的是对应的路由地址，请求方法
+def里面对应的是视图函数，
+POST方法，对应的请求内容可以和HTML联动使用。
+
+static目录里面的静态文件，不会在服务端执行，通过配置的静态 URL 路径访问默认情况下：static/css/style.css 访问，这是由 Flask自动处理的。找到的就实时渲染，未找到的会使用默认静态文件。模板文件必须放在 templates目录或者指定位置，视图函数只是引用模板，不包含模板内容。

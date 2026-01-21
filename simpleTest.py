@@ -50,3 +50,28 @@ def test_file_upload():
         files={'file': fileObj},
     )
     assert resp.status_code == 200
+
+# 为什么要设置类？
+class UserApi:
+    # __init__ 是构造方法，创建实例时会自动执行，用来初始化属性
+    def __init__(self, base_url):
+        # 1.把传入的 base_url 绑定到 self（实例）上，成为实例属性
+        self.base_url = base_url
+        # 2.初始化 token 为 None, 后续登录后赋值
+        self.token = None
+
+    # 登录方法：给self.token 赋值
+    def login(self, username, password):
+        url = f"{self.base_url}/login"
+        data = {"username": username, "password": password}
+        resp = requests.post(url, json=data).json()
+        # 登陆成功后，把token 存到self里面（共享给其他方法）
+        self.token = resp.get("token")
+        return resp
+
+    # 登出方法：读取 self.token
+    def logout(self):
+        url = f"{self.base_url}/logout"
+        # 直接通过 self.token 获取登录时保存的 token
+        headers = {"Authorization": f"Bearer {self.token}"}
+        return requests.post(url, headers=headers).json()

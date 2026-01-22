@@ -68,3 +68,10 @@ __func:双下划线表示是私有类型的变量，只能允许类本身进行�
 2.逻辑内聚；
 3.可扩展性；
 4.面向对象特性。
+
+问题2：json.dump（）和encode，json.loads()和decode有什么区别？
+回答：1.json.dump()/json.loads():处理 Python数据结构 与 JSON字符串之间的转换，聚焦“数据格式”;
+2.encode()/decode():处理 字符串 与 字节流 的编码转换，聚焦“数据存储/传输格式”；
+3.典型配合：Python字典-json.dumps()-JSON字符串-encode()-字节流（发送）;
+字节流-decode()-JSON字符串-json.loads()-Python字典（接收）
+
